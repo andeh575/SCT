@@ -49,7 +49,7 @@
      <Compile Include="Assets\Scripts\Interactable.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\accessPanelControl.cs" />
-     <Compile Include="Assets\Scripts\dialogueControl.cs" />
+     <Compile Include="Assets\Scripts\dialogueNPC.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Program Files/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
