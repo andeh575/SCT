@@ -6,8 +6,7 @@ using System.Collections;
 // Simple player movement with WASD/Arrow Keys amd helper functions
 public class PlayerController : MonoBehaviour {
 
-	public float baseSpeed = 5;
-	public float rotSpeed = 5;
+	private float baseSpeed = 5;
 	public bool disableMove = false; 	// External movement flag
 	private bool toggleMove = true;		// Internal movement toggle - default true: accepts requests to freeze player
 	private float moveHorizontal;		// Player rotational direction
@@ -27,21 +26,20 @@ public class PlayerController : MonoBehaviour {
 		} else { 							// Let's NOT lock the player's movement
 			moveHorizontal = Input.GetAxis ("Horizontal");
 			moveVertical = Input.GetAxis ("Vertical");
-			
+
 			// Forward movement and speed of the player
 			Vector3 forward = transform.TransformDirection (0, 0, 1);
 			float currentSpeed = baseSpeed * moveVertical;  
 			
 			// Rotational facing of the player
-			transform.Rotate (0, moveHorizontal * rotSpeed, 0);
+			transform.rotation = Quaternion.Euler (transform.rotation.eulerAngles.x, 
+			                                       (transform.rotation.eulerAngles.y + 100f * Time.deltaTime * moveHorizontal), 
+			                                       transform.rotation.eulerAngles.z);
 			
 			// Let's move forward in the direction we're currently facing
 			controller.SimpleMove (forward * currentSpeed);
 		}
 
-		if(Input.GetKeyDown(KeyCode.Escape)) {
-			Application.Quit();
-		}
 	}
 
 	// Toggle: lock player movement
@@ -50,5 +48,5 @@ public class PlayerController : MonoBehaviour {
 			disableMove = !disableMove;
 		}
 	}
-	
+
 }

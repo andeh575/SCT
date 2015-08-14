@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Animate a sliding door
 public class slideDoor : MonoBehaviour {
 
 	public enum State {
-		open,
-		closed,
+		open,		
+		closed,	
 		animating
 	}
 
 	public State state;
-	public GameObject aPanel;
+	public GameObject aPanel, bPanel;
 	private Animation anim;
 
 	// Use this for initialization
@@ -21,11 +22,14 @@ public class slideDoor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// If the panel has been turned ON and the door is closed then it should open
 		if (aPanel.GetComponent<accessPanel> ().state == accessPanel.State.on && state == slideDoor.State.closed) {
-			state = slideDoor.State.animating;
+			state = slideDoor.State.animating; // Ensure the animation doesn't get interrupted
 			StartCoroutine("Open");
-		} else if (aPanel.GetComponent<accessPanel> ().state == accessPanel.State.off && state == slideDoor.State.open) {
-			state = slideDoor.State.animating;
+		} 
+		// If the panel has been turned OFF and the door is open then it should close
+		else if (aPanel.GetComponent<accessPanel> ().state == accessPanel.State.off && state == slideDoor.State.open) {
+			state = slideDoor.State.animating;	// Ensure the animation doesn't get interrupted
 			StartCoroutine("Close");
 		}
 	}
@@ -35,9 +39,9 @@ public class slideDoor : MonoBehaviour {
 		anim.Play ("slideDoorOpen");
 
 		// Force player to wait for animation to finish
-		aPanel.GetComponent<accessPanel> ().controlFlag = false;
+		aPanel.GetComponent<accessPanel> ().ControlFlag = false;
 		yield return new WaitForSeconds (GetComponent<Animation>() ["slideDoorOpen"].length);
-		aPanel.GetComponent<accessPanel> ().controlFlag = true;
+		aPanel.GetComponent<accessPanel> ().ControlFlag = true;
 		state = slideDoor.State.open;
 	}
 
@@ -46,9 +50,9 @@ public class slideDoor : MonoBehaviour {
 		anim.Play ("slideDoorClosed");
 
 		// Force player to wait for animation to finish
-		aPanel.GetComponent<accessPanel> ().controlFlag = false;
+		aPanel.GetComponent<accessPanel> ().ControlFlag = false;
 		yield return new WaitForSeconds (GetComponent<Animation>() ["slideDoorClosed"].length);
-		aPanel.GetComponent<accessPanel> ().controlFlag = true;
+		aPanel.GetComponent<accessPanel> ().ControlFlag = true;
 		state = slideDoor.State.closed;
 	}
 }
