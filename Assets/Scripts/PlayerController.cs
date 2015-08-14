@@ -6,8 +6,8 @@ using System.Collections;
 // Simple player movement with WASD/Arrow Keys amd helper functions
 public class PlayerController : MonoBehaviour {
 
-	public float baseSpeed = 3;
-	public float rotSpeed = 3;
+	public float baseSpeed = 5;
+	public float rotSpeed = 5;
 	public bool disableMove = false; 	// External movement flag
 	private bool toggleMove = true;		// Internal movement toggle - default true: accepts requests to freeze player
 	private float moveHorizontal;		// Player rotational direction
@@ -37,6 +37,10 @@ public class PlayerController : MonoBehaviour {
 			
 			// Let's move forward in the direction we're currently facing
 			controller.SimpleMove (forward * currentSpeed);
+		}
+
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			Application.Quit();
 		}
 	}
 

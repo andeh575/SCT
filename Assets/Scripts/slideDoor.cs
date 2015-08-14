@@ -11,12 +11,12 @@ public class slideDoor : MonoBehaviour {
 
 	public State state;
 	public GameObject aPanel;
-	private new Animation animation;
+	private Animation anim;
 
 	// Use this for initialization
 	void Start () {
 		state = slideDoor.State.closed;
-		animation = gameObject.GetComponent<Animation> ();
+		anim = gameObject.GetComponent<Animation> ();
 	}
 	
 	// Update is called once per frame
@@ -32,22 +32,22 @@ public class slideDoor : MonoBehaviour {
 
 	// Open the door
 	private IEnumerator Open() {
-		animation.Play ("slideDoorOpen");
+		anim.Play ("slideDoorOpen");
 
 		// Force player to wait for animation to finish
 		aPanel.GetComponent<accessPanel> ().controlFlag = false;
-		yield return new WaitForSeconds (animation ["slideDoorOpen"].length);
+		yield return new WaitForSeconds (GetComponent<Animation>() ["slideDoorOpen"].length);
 		aPanel.GetComponent<accessPanel> ().controlFlag = true;
 		state = slideDoor.State.open;
 	}
 
 	// Close the door
 	private IEnumerator Close() {
-		animation.Play ("slideDoorClosed");
+		anim.Play ("slideDoorClosed");
 
 		// Force player to wait for animation to finish
 		aPanel.GetComponent<accessPanel> ().controlFlag = false;
-		yield return new WaitForSeconds (animation ["slideDoorClosed"].length);
+		yield return new WaitForSeconds (GetComponent<Animation>() ["slideDoorClosed"].length);
 		aPanel.GetComponent<accessPanel> ().controlFlag = true;
 		state = slideDoor.State.closed;
 	}

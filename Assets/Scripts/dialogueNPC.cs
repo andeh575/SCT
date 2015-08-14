@@ -5,10 +5,11 @@ public class dialogueNPC : MonoBehaviour {
 
 	public string[] answers;		// Things that the NPC could say
 	public string[] dialogue;		// Replies available to the player
-	public Rect windowRect = new Rect (	(Screen.width * 0.5f),
-										(Screen.height * 0.5f), 400, 150); // Some formatting for the dialogue window
+	public Rect windowRect = new Rect (	750, 400, 400, 150); // Some formatting for the dialogue window
 	bool displayDialogue = false;	// Interaction toggle
 	bool triggerDialogue = false;	// Proximity trigger
+	float native_width = 1920;
+	float native_height = 1080;
 
 
 	// Use this for initialization
@@ -24,14 +25,14 @@ public class dialogueNPC : MonoBehaviour {
 			toggleDialogueOn();	// 
 			togglePlayerMove(); // Attempt to freeze the player's movement
 		}
-		// Just in case the player wants to prematurely leave the dialogue
-		else if (Input.GetKeyDown(KeyCode.Escape)){
-			toggleDialogueOff(); 
-		}
 	}
 
 	// Let's display a GUI for the dialogue
 	private void OnGUI() {
+		float rx = Screen.width / native_width;
+		float ry = Screen.height / native_height; 
+		GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, new Vector3 (rx, ry, 1));
+
 		// Ensure we're close enough and the player explicitly wants to initiate dialogue
 		if (displayDialogue) { 
 			windowRect = GUILayout.Window (0, windowRect, windowOpts, "NPC");
@@ -55,19 +56,13 @@ public class dialogueNPC : MonoBehaviour {
 		displayDialogue = true;
 	}
 
-	// Player chooses to exit the dialogue
-	private void toggleDialogueOff() {
-		displayDialogue = false;
-		togglePlayerMove (); // Unfreeze the player's movement
-	}
-
 	// Player must be close enough to initiate dialogue
 	private void OnTriggerEnter(Collider target){
 		if (target.tag.Equals("Player")) {
 			triggerDialogue = true;
 		}
 	}
-
+	
 	// Exit dialogue if the player walks away
 	private void OnTriggerExit(Collider target) {
 		if (target.tag.Equals("Player")) {
