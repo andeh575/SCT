@@ -5,7 +5,8 @@ public class dialogueNPC : MonoBehaviour {
 
 	public string[] answers;		// Things that the NPC could say
 	public string[] dialogue;		// Replies available to the player
-	public Rect windowRect = new Rect (750, 600, 400, 100); // Some formatting for the dialogue window
+	public Rect windowRect = new Rect (	(Screen.width * 0.5f),
+										(Screen.height * 0.5f), 400, 150); // Some formatting for the dialogue window
 	bool displayDialogue = false;	// Interaction toggle
 	bool triggerDialogue = false;	// Proximity trigger
 
