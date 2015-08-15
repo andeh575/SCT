@@ -16,7 +16,7 @@ Platform assembly: H:\Documents\Coding\SCT\StarboardCodingTest\SCT_Data\Managed\
 Loading H:\Documents\Coding\SCT\StarboardCodingTest\SCT_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: H:\Documents\Coding\SCT\StarboardCodingTest\SCT_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading H:\Documents\Coding\SCT\StarboardCodingTest\SCT_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.098 seconds
+- Completed reload, in  0.100 seconds
 desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -24,5 +24,5 @@ desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
 Platform assembly: H:\Documents\Coding\SCT\StarboardCodingTest\SCT_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: H:\Documents\Coding\SCT\StarboardCodingTest\SCT_Data\Managed\System.dll (this message is harmless)
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: a8f4 -> priority: 1 
-  Thread -> id: 31c0 -> priority: 1 
+  Thread -> id: c87c -> priority: 1 
+  Thread -> id: c8a0 -> priority: 1 

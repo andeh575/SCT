@@ -15,14 +15,9 @@ public class accessPanel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.state = accessPanel.State.off; // All panels off by default
+		state = accessPanel.State.off; // All panels off by default
 		triggerFlag = false;
 		controlFlag = true;
-	}
-
-	// Update is called once per frame
-	void Update () {
-
 	}
 
 	// We've been called to perform some action
@@ -40,12 +35,12 @@ public class accessPanel : MonoBehaviour {
 	
 	// Activate the panel
 	private void On() {
-		this.state = accessPanel.State.on;
+		state = accessPanel.State.on;
 	}
 
 	// Deactivate the panel
 	private void Off() {
-		this.state = accessPanel.State.off;
+		state = accessPanel.State.off;
 	}
 
 	// triggerFlag accessor 

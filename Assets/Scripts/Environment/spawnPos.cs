@@ -11,9 +11,5 @@ public class spawnPos : MonoBehaviour {
 		// Create the item within a random unit sphere around the Spawner
 		transform.position = (spawner.transform.position) + (Random.insideUnitSphere / 2);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

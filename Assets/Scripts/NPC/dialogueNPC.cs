@@ -19,11 +19,6 @@ public class dialogueNPC : MonoBehaviour {
 		displayDialogue = false;
 		dialogueBox.SetActive (false);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
 
 	// We've been called to perform some action
 	public void Action() {

@@ -11,7 +11,7 @@ public class slideDoor : MonoBehaviour {
 	}
 
 	public State state;
-	public GameObject aPanel, bPanel;
+	public GameObject aPanel;
 	private Animation anim;
 
 	// Use this for initialization
